@@ -1,6 +1,6 @@
 <?php
 /**
- * User: dplante
+ * User: hpistor
  * Date: 3/10/18
  */
 define('OAUTH_ACCESS_TOKEN', '1232275842-tZob2nKu65dbW7b2RLE3rIzhNS1kVPpp29JAFX8');
