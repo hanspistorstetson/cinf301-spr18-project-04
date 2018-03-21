@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "TwitterView\\": "twitterView/",
+            "j7mbo\\": "vendor/j7mbo/twitter-api-php"
+        }
+    },
+    "require": {
+        "j7mbo/twitter-api-php": "^1.0"
+    }
+}

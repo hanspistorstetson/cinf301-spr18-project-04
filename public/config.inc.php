@@ -1,0 +1,9 @@
+<?php
+/**
+ * User: dplante
+ * Date: 3/10/18
+ */
+define('OAUTH_ACCESS_TOKEN', '1232275842-tZob2nKu65dbW7b2RLE3rIzhNS1kVPpp29JAFX8');
+define('OAUTH_ACCESS_TOKEN_SECRET', 'LC5JHM33QJ9UDqOtqIB4K6pa97NjmisR8cI4W0zZpurWr');
+define('CONSUMER_KEY', 'DZlLXdPX6qRVI5JR6opR5GuH5');
+define('CONSUMER_SECRET', 'Qq58Wd0TWglEiaxZQkzlwpETYapZtoNkHBs0MNCI8hoc4Ejn6b');
