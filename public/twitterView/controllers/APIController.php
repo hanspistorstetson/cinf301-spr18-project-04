@@ -25,6 +25,28 @@ class APIController {
         $requestMethod = 'GET';
         $twitter = new \TwitterAPIExchange($settings);
         $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
+        return TweetDecoder::decodeTweets(json_decode($result, true)['statuses']);
+    }
+
+    public static function getSpecificTweet($id) {
+        $settings = self::getSettings();
+        $url = 'https://api.twitter.com/1.1/statuses/show.json';
+        $getField = '?id='.$id;
+        $requestMethod = 'GET';
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
         return TweetDecoder::decodeTweet(json_decode($result, true));
+    }
+
+    public static function getReplies($id, $userHandle) {
+        $lang = 'en';
+        $settings = self::getSettings();
+        $url = 'https://api.twitter.com/1.1/search/tweets.json';
+        $getField = '?q=to:' . $userHandle . '&since_id=' . $id . '&lang=' . $lang;
+        $requestMethod = 'GET';
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
+        return TweetDecoder::decodeTweetReplies(json_decode($result, true)['statuses']);
+
     }
 }

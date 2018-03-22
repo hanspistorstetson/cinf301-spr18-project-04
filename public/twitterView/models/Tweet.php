@@ -12,6 +12,7 @@ class Tweet {
     public $likes;
     public $retweets;
     public $createdAt;
+    public $sticky;
 
     function __construct($data) {
         $this->user = new User($data['user']);
@@ -29,9 +30,10 @@ class Tweet {
     }
 
     function __toString() {
+        $sticky = isset($this->sticky) ? $this->sticky : "";
         $string =
-            '<div class="card tweet">' .
-            '   <a class="tweetLink" href="?controller=tweets&action=show&tweet=' . $this->id . '"></a>' .
+            '<div class="card tweet ' . $sticky . '">' .
+                '<a class="tweetLink" href="?controller=tweets&action=show&tweet=' . $this->id . '"></a>' .
                 '<div class="card-body">' .
                     '<h2 class="card-title tweet-title">' . $this->user->displayName . '</h2>' .
                     '<h4 class="tweet-subtitle"><a href="https://twitter.com/'. $this->user->handle .'" target="_blank">@' . $this->user->handle . '</a></h4>' .

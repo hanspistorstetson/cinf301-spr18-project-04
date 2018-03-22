@@ -1,4 +1,5 @@
 $background-color:  #26b2f8;
+$lighter-background: #47bef9;
 $netural-color: #cccccc;
 
 body {
@@ -32,10 +33,17 @@ a:active {
 
 .tweet {
   margin: 20px;
-  background-color: $background-color;
+  background-color: $lighter-background;
   cursor: pointer;
-
 }
+
+
+.replies {
+  margin: 20px;
+  background-color: #99dbfc;
+  cursor: pointer;
+}
+
 .tweet-title {
   font-size: 35px;
   margin: 1px;
@@ -55,5 +63,10 @@ a:active {
 .tweetmeta {
   margin-right: 10px;
 }
+
+.stickyTweet {
+  position: sticky;
+}
+
 
 

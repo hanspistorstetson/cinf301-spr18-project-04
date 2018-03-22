@@ -22,7 +22,12 @@ a:active {
 
 .tweet {
   margin: 20px;
-  background-color: #26b2f8;
+  background-color: #47bef9;
+  cursor: pointer; }
+
+.replies {
+  margin: 20px;
+  background-color: #99dbfc;
   cursor: pointer; }
 
 .tweet-title {
@@ -39,5 +44,8 @@ a:active {
 
 .tweetmeta {
   margin-right: 10px; }
+
+.stickyTweet {
+  position: sticky; }
 
 /*# sourceMappingURL=style.css.map */

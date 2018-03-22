@@ -3,7 +3,6 @@ namespace TwitterView\Controllers;
 require_once("config.inc.php");
 
 use TwitterView\Renderer as Renderer;
-use TwitterView\Utils\TweetDecoder as TweetDecoder;
 
 class TweetController {
 
@@ -15,13 +14,16 @@ class TweetController {
             $this->error();
             exit;
         }
+        unset($_SESSION['id' . $_GET['tweet']]);
         if (!isset($_SESSION["id" . $_GET['tweet']])) {
-            $tweet = $this->getTweetInfo();
+            $tweet = $this->getTweetInfo($_GET['tweet']);
         } else {
             $tweet = unserialize($_SESSION["id" . $_GET['tweet']]);
         }
         $view = new Renderer('views/tweets/');
         $view->tweet = $tweet;
+        $view->tweet->sticky = "stickyTweet";
+        $view->replies = APIController::getReplies($tweet->id, $tweet->user->handle);
         $view->render('show.php');
     }
     public function error()
@@ -30,9 +32,8 @@ class TweetController {
         $view->render('error.php');
     }
 
-    public function getTweetInfo() {
-        echo "<p></p>";
-        print_r($_SESSION);
+    public function getTweetInfo($id) {
+        return APIController::getSpecificTweet($id);
     }
 
     private function setSettings() {
