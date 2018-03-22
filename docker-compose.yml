@@ -1,8 +1,20 @@
 version: '2'
 services:
-  lamp:
-    image: fauria/lamp:latest
-    ports:
-        - 80:80
-    volumes:
-      - ./public:/var/www/html
+    php:
+        build: php
+        expose:
+            - 9000
+        volumes:
+            - ./php/www:/var/www/html
+
+    apache2:
+        image: webdevops/apache:latest
+        args:
+            - PHP_SOCKET=php:9000
+        volumes:
+            - ./php/www:/var/www/html
+        ports:
+            - 80:80
+            - 443:443
+        links:
+            - php

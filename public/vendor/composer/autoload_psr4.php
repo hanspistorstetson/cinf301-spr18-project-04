@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'j7mbo\\' => array($vendorDir . '/j7mbo/twitter-api-php'),
     'TwitterView\\' => array($baseDir . '/twitterView'),
+    'TwitterAPI\\' => array($vendorDir . '/j7mbo/twitter-api-php'),
 );

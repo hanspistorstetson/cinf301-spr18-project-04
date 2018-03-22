@@ -4,27 +4,24 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit99397890509b36d3bd1654bdd545cb74
+class ComposerStaticInit9fc25a1f26c6de400db2c0bce4c47a8e
 {
     public static $prefixLengthsPsr4 = array (
-        'j' => 
-        array (
-            'j7mbo\\' => 6,
-        ),
         'T' => 
         array (
             'TwitterView\\' => 12,
+            'TwitterAPI\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'j7mbo\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/j7mbo/twitter-api-php',
-        ),
         'TwitterView\\' => 
         array (
             0 => __DIR__ . '/../..' . '/twitterView',
+        ),
+        'TwitterAPI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/j7mbo/twitter-api-php',
         ),
     );
 
@@ -35,9 +32,9 @@ class ComposerStaticInit99397890509b36d3bd1654bdd545cb74
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit99397890509b36d3bd1654bdd545cb74::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit99397890509b36d3bd1654bdd545cb74::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit99397890509b36d3bd1654bdd545cb74::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9fc25a1f26c6de400db2c0bce4c47a8e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9fc25a1f26c6de400db2c0bce4c47a8e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9fc25a1f26c6de400db2c0bce4c47a8e::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,6 +1,10 @@
 <div class="container">
-    <div class="row justify-content-center align-items-center">
-        <h1>The Competition Begins!</h1>
-        <p class="p">Welcome to the <?=$this->title?>!<p>
-    </div>
+    <?php foreach ($this->tweets as $tweet) {
+        echo '<div class="card tweet">';
+            echo '<div class="card-body">';
+                echo '<h4 class="card-title>"' . $tweet["user"]["screen_name"] . "</h4>";
+                echo "<p class='card-text'>" . $tweet["full_text"] . "</p>";
+            echo '</div>';
+        echo '</div>';
+    } ?>
 </div>

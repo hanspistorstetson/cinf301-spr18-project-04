@@ -8,4 +8,8 @@
 .navbar-brand {
   font-size: 30px; }
 
-/*# sourceMappingURL=header.css.map */
+.tweet {
+  margin: 20px;
+  background-color: #26b2f8; }
+
+/*# sourceMappingURL=style.css.map */
