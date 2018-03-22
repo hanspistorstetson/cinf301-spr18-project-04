@@ -3,15 +3,12 @@
 namespace TwitterView\Controllers;
 
 use TwitterView\Renderer as Renderer;
-use TwitterView\Controllers\TweetController;
+use TwitterView\Models\HomeTweets;
 
-class MainController {
+class UserController {
     public function home()
     {
-        $TweetController = new TweetController();
-        $tweets = $TweetController->getHomeTweets();
-        $view = new Renderer('views/main/');
-        $view->tweets = $tweets;
+        $view = new Renderer('views/users/');
         $view->render('home.php');
     }
     public function error()

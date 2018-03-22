@@ -10,12 +10,17 @@
     </head>
 
     <header>
-        <nav class="navbar justify-content-between twitter-header">
-            <a class="navbar-brand">TwitterView</a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 twitter-search-button" type="submit">Search</button>
-            </form>
+        <nav class="navbar navbar-expand-lg twitter-header">
+            <a href="/" class="navbar-brand">Twinstagram</a>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="?controller=users&action=home">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?controller=hashtag&action=home">Hashtags</a>
+                </li>
+            </ul>
         </nav>
     </header>
     <body>

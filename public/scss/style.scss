@@ -1,16 +1,33 @@
 $background-color:  #26b2f8;
+$netural-color: #cccccc;
+
+body {
+  background-color: $netural-color;
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: darkblue;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a:active {
+  color: blue;
+}
 
 .twitter-header {
   background-color: $background-color
 }
 
-.twitter-search-button {
-  border: none;
-  color: white;
-}
-
 .navbar-brand {
   font-size: 30px;
+  color: $netural-color!important;
 }
 
 .tweet {
@@ -18,3 +35,23 @@ $background-color:  #26b2f8;
   background-color: $background-color;
 
 }
+.tweet-title {
+  font-size: 35px;
+  margin: 1px;
+}
+
+.tweet-subtitle {
+  font-size: 15px;
+}
+
+.nav-item {
+  font-size: larger;
+  a {
+    color: darkblue;
+  }
+}
+
+.tweetmeta {
+  margin-right: 10px;
+}
+
