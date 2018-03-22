@@ -29,10 +29,9 @@ class Tweet {
     }
 
     function __toString() {
-        $serialized = serialize($this);
         $string =
-            '<a href="?controller=tweets&action=show&tweet=' . $this->id . '">' .
             '<div class="card tweet">' .
+            '   <a class="tweetLink" href="?controller=tweets&action=show&tweet=' . $this->id . '"></a>' .
                 '<div class="card-body">' .
                     '<h2 class="card-title tweet-title">' . $this->user->displayName . '</h2>' .
                     '<h4 class="tweet-subtitle"><a href="https://twitter.com/'. $this->user->handle .'" target="_blank">@' . $this->user->handle . '</a></h4>' .
@@ -40,8 +39,7 @@ class Tweet {
                     '<span class="tweetmeta"><i class="fas fa-retweet"></i> ' . $this->retweets . '</span>' .
                     '<span class="tweetmeta"><i class="fas fa-star"></i> ' . $this->likes . '</span>' .
                 '</div>' .
-            '</div>' .
-            '</a>'
+            '</div>'
         ;
         return $string;
     }

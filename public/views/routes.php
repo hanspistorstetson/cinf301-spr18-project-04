@@ -11,6 +11,8 @@ function route($controller, $action)
             break;
         case 'users':
             $controller = new TwitterView\Controllers\UserController();
+        case 'tweets':
+            $controller = new TwitterView\Controllers\TweetController();
         default:
             break;
     }
@@ -20,7 +22,8 @@ function route($controller, $action)
 // K: controller, V: action
 $controllers = array(
     'main'  => ['home', 'error'],
-    'users' => ['home', 'error']
+    'users' => ['home', 'error'],
+    'tweets' => ['show', 'error']
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

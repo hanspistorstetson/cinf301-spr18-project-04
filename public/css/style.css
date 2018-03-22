@@ -22,7 +22,8 @@ a:active {
 
 .tweet {
   margin: 20px;
-  background-color: #26b2f8; }
+  background-color: #26b2f8;
+  cursor: pointer; }
 
 .tweet-title {
   font-size: 35px;

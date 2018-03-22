@@ -11,17 +11,18 @@ class TweetController {
     private $settings;
 
     public function show() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['tweet'])) {
             $this->error();
             exit;
         }
-        if (!isset($_SESSION[$_GET['id']])) {
-            $this->tweet = $this->getTweetInfo();
+        if (!isset($_SESSION["id" . $_GET['tweet']])) {
+            $tweet = $this->getTweetInfo();
         } else {
-            $this->tweet = $_SESSION[$_GET['id']];
+            $tweet = unserialize($_SESSION["id" . $_GET['tweet']]);
         }
         $view = new Renderer('views/tweets/');
-        $view->render('home.php');
+        $view->tweet = $tweet;
+        $view->render('show.php');
     }
     public function error()
     {
@@ -30,7 +31,8 @@ class TweetController {
     }
 
     public function getTweetInfo() {
-
+        echo "<p></p>";
+        print_r($_SESSION);
     }
 
     private function setSettings() {
@@ -40,23 +42,5 @@ class TweetController {
             'consumer_key'              => CONSUMER_KEY,
             'consumer_secret'           => CONSUMER_SECRET
         );
-    }
-
-    public function getHomeTweets() {
-        $this->setSettings();
-        $url = 'https://api.twitter.com/1.1/search/tweets.json';
-        /* Define the language. */
-        $language = 'en';
-        /* Create the paramter fields. */
-        $getfield = '?lang='.$language.'&count='."5".'&tweet_mode=extended&q='."test";
-        /* Define the request method. */
-        $requestMethod = 'GET';
-        /* Create a new TwitterAPIExchange object. */
-        $twitter = new \TwitterAPIExchange($this->settings);
-        /* Retrieve the data from the Twitter API. */
-        $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
-        /* Json decode the data. */
-        //return json_decode($result, true)["statuses"];
-        return TweetDecoder::decodeTweet(json_decode($result, true));
     }
 }

@@ -26,7 +26,10 @@ class TweetDecoder {
         }
         $tweetObjs = [];
         foreach ($tweets as $tweet) {
-            array_push($tweetObjs,  new Tweet($tweet));
+            $tweetObj = new Tweet($tweet);
+            $tweetId = $tweetObj->id;
+            $_SESSION['id' . $tweetId] = serialize($tweetObj);
+            array_push($tweetObjs,  $tweetObj);
         }
         return $tweetObjs;
     }
