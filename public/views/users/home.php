@@ -17,6 +17,13 @@
 
     </div>
 
+    <script>
+        $(".userCard").click(function() {
+            window.location = $(this).find(".userLink").attr("href");
+            console.log("Click")
+            return false;
+        })
+    </script>
 
 
 </div>

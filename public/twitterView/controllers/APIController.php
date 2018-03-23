@@ -60,4 +60,13 @@ class APIController {
         $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
         return UserDecoder::decodeUsers(json_decode($result, true));
     }
+
+    public static function getSpecificUser($id) {
+        $settings = self::getSettings();
+        $url = "https://api.twitter.com/1.1/users/show.json";
+        $getField = "?user_id=" . $id;
+        $requestMethod = "GET";
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
+        return UserDecoder::decodeUser(json_decode($result, true));    }
 }

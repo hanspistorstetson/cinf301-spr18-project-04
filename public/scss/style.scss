@@ -2,6 +2,10 @@ $background-color:  #26b2f8;
 $lighter-background: #47bef9;
 $netural-color: #cccccc;
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: $netural-color;
 }
@@ -81,4 +85,13 @@ a:active {
 }
 .twitter-form-control {
   margin: 0;
+}
+
+.userCard {
+  cursor: pointer;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
 }

@@ -23,8 +23,8 @@ function route($controller, $action)
 // K: controller, V: action
 $controllers = array(
     'main'  => ['home', 'error'],
-    'users' => ['home', 'error'],
-    'tweets' => ['show', 'error']
+    'users' => ['home', 'error', 'show'],
+    'tweets' => ['show', 'error', 'show']
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

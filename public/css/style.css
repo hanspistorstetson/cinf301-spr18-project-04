@@ -1,3 +1,6 @@
+a {
+  text-decoration: none; }
+
 body {
   background-color: #cccccc; }
 
@@ -60,5 +63,12 @@ a:active {
 
 .twitter-form-control {
   margin: 0; }
+
+.userCard {
+  cursor: pointer; }
+
+.link {
+  color: black;
+  text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

@@ -25,7 +25,7 @@ class Tweet {
     }
 
     function replaceUserWithHyperlink($text) {
-        $replaced_text = preg_replace("(@\w+)", '<a href="https://twitter.com/' . $this->user->handle . '" target="_blank">' . $this->user->displayName . '</a>', $text);
+        $replaced_text = preg_replace("(@\w+)", '<a href="https://twitter.com/' . $this->user->handle . '" target="_blank">@' . $this->user->handle . '</a>', $text);
         return $replaced_text;
     }
 
@@ -40,7 +40,8 @@ class Tweet {
                     '<p class="card-text">' . $this->text . '</p>' .
                     '<span class="tweetmeta"><i class="fas fa-retweet"></i> ' . $this->retweets . '</span>' .
                     '<span class="tweetmeta"><i class="fas fa-star"></i> ' . $this->likes . '</span>' .
-                '</div>' .
+                    '<a href="#" class="link"><span class="tweetmeta"><i class="fas fa-link"></i> ' . $this->likes . '</span></a>' .
+        '</div>' .
             '</div>'
         ;
         return $string;
