@@ -9,6 +9,7 @@ class MainController {
     public function home()
     {
         $tweets = APIController::getHomeTweets();
+
         $view = new Renderer('views/main/');
         $view->tweets = $tweets;
         $view->render('home.php');

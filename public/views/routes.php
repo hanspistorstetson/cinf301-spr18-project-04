@@ -11,6 +11,7 @@ function route($controller, $action)
             break;
         case 'users':
             $controller = new TwitterView\Controllers\UserController();
+            break;
         case 'tweets':
             $controller = new TwitterView\Controllers\TweetController();
         default:

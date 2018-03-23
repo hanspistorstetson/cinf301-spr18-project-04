@@ -1,15 +1,51 @@
+body {
+  background-color: #cccccc; }
+
+a:link {
+  color: red; }
+
+a:visited {
+  color: darkblue; }
+
+a:hover {
+  color: hotpink; }
+
+a:active {
+  color: blue; }
+
 .twitter-header {
   background-color: #26b2f8; }
 
-.twitter-search-button {
-  border: none;
-  color: white; }
-
 .navbar-brand {
-  font-size: 30px; }
+  font-size: 30px;
+  color: #cccccc !important; }
 
 .tweet {
   margin: 20px;
-  background-color: #26b2f8; }
+  background-color: #47bef9;
+  cursor: pointer; }
+
+.replies {
+  margin: 20px;
+  background-color: #99dbfc;
+  cursor: pointer; }
+
+.tweet-title {
+  font-size: 35px;
+  margin: 1px; }
+
+.tweet-subtitle {
+  font-size: 15px; }
+
+.nav-item {
+  font-size: larger; }
+  .nav-item a {
+    color: darkblue; }
+
+.tweetmeta {
+  margin-right: 10px; }
+
+.stickyTweet {
+  position: sticky; }
 
 /*# sourceMappingURL=style.css.map */

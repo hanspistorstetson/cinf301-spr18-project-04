@@ -48,4 +48,17 @@ a:active {
 .stickyTweet {
   position: sticky; }
 
+.user-heading {
+  text-align: center;
+  font-size: 30px;
+  margin: 15px; }
+
+.twitter-form-control-div {
+  margin: 0;
+  padding: 0;
+  font-size: 20px; }
+
+.twitter-form-control {
+  margin: 0; }
+
 /*# sourceMappingURL=style.css.map */

@@ -4,6 +4,7 @@ require_once("config.inc.php");
 
 use TwitterView\Renderer as Renderer;
 use TwitterView\Utils\TweetDecoder as TweetDecoder;
+use TwitterView\Utils\UserDecoder as UserDecoder;
 
 class APIController {
 
@@ -21,7 +22,7 @@ class APIController {
         $settings = self::getSettings();
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $language = 'en';
-        $getfield = '?lang='.$language.'&count='."5".'&tweet_mode=extended&q='."test";
+        $getfield = '?lang='.$language.'&count='."5".'&tweet_mode=extended&q=a';
         $requestMethod = 'GET';
         $twitter = new \TwitterAPIExchange($settings);
         $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
@@ -48,5 +49,15 @@ class APIController {
         $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
         return TweetDecoder::decodeTweetReplies(json_decode($result, true)['statuses']);
 
+    }
+
+    public static function getUsers($query) {
+        $settings = self::getSettings();
+        $url = "https://api.twitter.com/1.1/users/search.json";
+        $getField = "?q=" . $query . "&count=20";
+        $requestMethod = "GET";
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
+        return UserDecoder::decodeUsers(json_decode($result, true));
     }
 }
