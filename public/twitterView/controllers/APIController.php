@@ -81,4 +81,17 @@ class APIController {
         $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
         return TweetDecoder::decodeTweets(json_decode($result, true)['statuses']);
     }
+
+    public static function getUserTweets($userid) {
+        $settings = self::getSettings();
+        $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+        $getfield = '?user_id=' . $userid . '&count=20&include_rts=true&tweet_mode=extended';
+        $requestMethod = 'GET';
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
+        return TweetDecoder::decodeTweets(json_decode($result, true));
+    }
+
+
+
 }

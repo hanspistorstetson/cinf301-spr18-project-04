@@ -27,8 +27,11 @@ class UserController {
         } else {
             $user = unserialize($_SESSION["userid" . $_GET['user']]);
         }
+        $tweets = APIController::getUserTweets($user->id);
         $view = new Renderer('views/users/');
+        $view->tweets = $tweets;
         $view->user = $user;
+
         $view->render("show.php");
     }
     public function error()

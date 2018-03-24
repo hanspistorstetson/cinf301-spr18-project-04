@@ -6,5 +6,11 @@
         <p class="card-text"><?php echo $this->tweet->text ?></p>
         <span class="tweetmeta"><i class="fas fa-retweet"></i><?php echo $this->tweet->retweets ?></span>
         <span class="tweetmeta"><i class="fas fa-star"></i>   <?php echo $this->tweet->likes ?></span>
+        <a href="https://twitter.com/<?php echo $this->tweet->user->handle ?>/status/<?php echo $this->tweet->id ?>" target="_blank"><span class="tweetmeta"><i class="fas fa-link"></i>Link</span></a>
     </div>
 </div>
+
+
+
+
+

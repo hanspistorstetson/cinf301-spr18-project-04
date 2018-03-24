@@ -71,4 +71,8 @@ a:active {
   color: black;
   text-decoration: none; }
 
+#sticky-sidebar {
+  position: fixed;
+  float: left; }
+
 /*# sourceMappingURL=style.css.map */
