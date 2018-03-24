@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="user-heading">Search for Users!</h1>
+    <h1 class="user-heading">User Search</h1>
 
     <form method="GET">
         <input type="hidden" name="controller" value="users" />
@@ -9,11 +9,14 @@
     </form>
 
     <div class="row text-center">
+
         <?php
-            foreach ($this->users as $user) {
-                echo $user;
-            }
-        ?>
+        $userview = new TwitterView\Renderer('views/templates/');
+        foreach ($this->users as $user) {
+            $userview->user = $user;
+            $userview->render("user.php");
+        } ?>
+
 
     </div>
 

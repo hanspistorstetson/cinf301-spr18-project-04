@@ -8,13 +8,13 @@ a:link {
   color: red; }
 
 a:visited {
-  color: darkblue; }
+  color: red; }
 
 a:hover {
   color: hotpink; }
 
 a:active {
-  color: blue; }
+  color: red; }
 
 .twitter-header {
   background-color: #26b2f8; }

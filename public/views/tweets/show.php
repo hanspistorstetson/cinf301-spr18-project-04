@@ -2,13 +2,20 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <?php echo $this->tweet ?>
+            <?php
+            $tweetview = new TwitterView\Renderer('views/templates/');
+                $tweetview->tweet = $this->tweet;
+                $tweetview->render("tweet.php");
+            ?>
         </div>
     </div>
 
+
     <?php
-        foreach ($this->replies as $reply) {
-            echo $reply;
-        }
-    ?>
+    $replyview = new TwitterView\Renderer('views/templates/');
+    foreach ($this->replies as $reply) {
+        $replyview->reply = $reply;
+        $replyview->render("reply.php");
+    } ?>
+
 </div>

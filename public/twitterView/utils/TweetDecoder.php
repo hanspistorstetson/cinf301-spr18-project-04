@@ -11,9 +11,16 @@ class TweetDecoder {
         $tweets = array();
         $tweet_num = 0;
         foreach ($json as $tweet) {
+
+            if (isset($tweet['retweeted_status'])) {
+                $text = $tweet['retweeted_status']['full_text'];
+            } else {
+                $text = $tweet['full_text'];
+            }
+
             $tweets[$tweet_num] = array(
                 "createdAt" => $tweet["created_at"],
-                "fullText" => $tweet["full_text"],
+                "fullText" => $text,
                 "id" => $tweet["id_str"],
                 "likes" => $tweet["favorite_count"],
                 "retweets" => $tweet["retweet_count"],
@@ -25,8 +32,12 @@ class TweetDecoder {
             );
             $tweet_num += 1;
         }
+
+
+
         $tweetObjs = [];
         foreach ($tweets as $tweet) {
+
             $tweetObj = new Tweet($tweet);
             $tweetId = $tweetObj->id;
             $_SESSION['tweetid' . $tweetId] = serialize($tweetObj);
@@ -39,9 +50,15 @@ class TweetDecoder {
         $tweets = array();
         $tweet_num = 0;
         foreach ($json as $tweet) {
-                $tweets[$tweet_num] = array(
+            if (isset($tweet['retweeted_status'])) {
+                $text = $tweet['retweeted_status']['full_text'];
+            } else {
+                $text = $tweet['full_text'];
+            }
+
+            $tweets[$tweet_num] = array(
                     "createdAt" => $tweet["created_at"],
-                    "fullText" => $tweet["text"],
+                    "fullText" => $text,
                     "id" => $tweet["id_str"],
                     "likes" => $tweet["favorite_count"],
                     "retweets" => $tweet["retweet_count"],
@@ -67,8 +84,14 @@ class TweetDecoder {
 
 
     public static function decodeTweet($json) {
+        if (isset($json['retweeted_status']['full_text'])) {
+            $text = $json['retweeted_status']['full_text'];
+        } else {
+            $text = $json['full_text'];
+        }
+
         $tweet = array(
-            "fullText" => $json["text"],
+            "fullText" => $text,
             "createdAt" => $json["created_at"],
             "id" => $json["id_str"],
             "likes" => $json["favorite_count"],

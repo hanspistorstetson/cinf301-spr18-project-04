@@ -32,7 +32,7 @@ class APIController {
     public static function getSpecificTweet($id) {
         $settings = self::getSettings();
         $url = 'https://api.twitter.com/1.1/statuses/show.json';
-        $getField = '?id='.$id;
+        $getField = '?id='.$id . '&tweet_mode=extended';
         $requestMethod = 'GET';
         $twitter = new \TwitterAPIExchange($settings);
         $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
@@ -68,5 +68,17 @@ class APIController {
         $requestMethod = "GET";
         $twitter = new \TwitterAPIExchange($settings);
         $result = $twitter->setGetfield($getField)->buildOauth($url, $requestMethod)->performRequest();
-        return UserDecoder::decodeUser(json_decode($result, true));    }
+        return UserDecoder::decodeUser(json_decode($result, true));
+    }
+
+    public static function getHashtags($query) {
+        $settings = self::getSettings();
+        $url = 'https://api.twitter.com/1.1/search/tweets.json';
+        $language = 'en';
+        $getfield = '?lang='.$language.'&count='."5".'&tweet_mode=extended&q=' . $query;
+        $requestMethod = 'GET';
+        $twitter = new \TwitterAPIExchange($settings);
+        $result = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
+        return TweetDecoder::decodeTweets(json_decode($result, true)['statuses']);
+    }
 }

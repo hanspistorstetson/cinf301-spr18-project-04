@@ -17,6 +17,7 @@ class Tweet {
     function __construct($data) {
         $this->user = new User($data['user']);
         $this->text = $this->replaceUserWithHyperlink($data['fullText']);
+        $this->text = $this->replaceHashWithHyperLink($this->text);
         $this->id = $data['id'];
         $this->likes = $data['likes'];
         $this->retweets = $data["retweets"];
@@ -29,22 +30,12 @@ class Tweet {
         return $replaced_text;
     }
 
-    function __toString() {
-        $sticky = isset($this->sticky) ? $this->sticky : "";
-        $string =
-            '<div class="card tweet ' . $sticky . '">' .
-                '<a class="tweetLink" href="?controller=tweets&action=show&tweet=' . $this->id . '"></a>' .
-                '<div class="card-body">' .
-                    '<h2 class="card-title tweet-title">' . $this->user->displayName . '</h2>' .
-                    '<h4 class="tweet-subtitle"><a href="https://twitter.com/'. $this->user->handle .'" target="_blank">@' . $this->user->handle . '</a></h4>' .
-                    '<p class="card-text">' . $this->text . '</p>' .
-                    '<span class="tweetmeta"><i class="fas fa-retweet"></i> ' . $this->retweets . '</span>' .
-                    '<span class="tweetmeta"><i class="fas fa-star"></i> ' . $this->likes . '</span>' .
-                    '<a href="#" class="link"><span class="tweetmeta"><i class="fas fa-link"></i> ' . $this->likes . '</span></a>' .
-        '</div>' .
-            '</div>'
-        ;
-        return $string;
+    function replaceHashWithHyperLink($text) {
+        $replaced = preg_replace("/(#\w+)/", '<a href="https://twitter.com/search?q=$1&src=typd" target="_blank">' . '$1</a>', $text);
+        $replaced = preg_replace("/q=#/", 'q=%23', $replaced);
+        return $replaced;
     }
+
+    // https://twitter.com/search?q=%23lit
 
 }

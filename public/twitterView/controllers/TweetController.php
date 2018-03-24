@@ -14,18 +14,21 @@ class TweetController {
             $this->error();
             exit;
         }
-        unset($_SESSION['tweetid' . $_GET['tweet']]);
-        if (!isset($_SESSION["tweetid" . $_GET['tweet']])) {
-            $tweet = $this->getTweetInfo($_GET['tweet']);
-        } else {
-            $tweet = unserialize($_SESSION["tweetid" . $_GET['tweet']]);
-        }
         $tweet = $this->getTweetInfo($_GET['tweet']);
         $view = new Renderer('views/tweets/');
         $view->tweet = $tweet;
         $view->tweet->sticky = "stickyTweet";
         $view->replies = APIController::getReplies($tweet->id, $tweet->user->handle);
         $view->render('show.php');
+    }
+    public function search() {
+        if (isset($_GET["query"])) {
+            $tweets = APIController::getHashtags($_GET['query']);
+        }
+        $view = new Renderer('views/tweets/');
+        $view->tweets = $tweets;
+
+        $view->render('search.php');
     }
     public function error()
     {

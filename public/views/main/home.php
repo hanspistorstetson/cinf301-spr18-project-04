@@ -1,6 +1,10 @@
 <div class="container">
-    <?php foreach ($this->tweets as $tweet) {
-        echo $tweet;
+    <h1 class="text-center">Latest Tweets!</h1>
+    <?php
+    $tweetview = new TwitterView\Renderer('views/templates/');
+    foreach ($this->tweets as $tweet) {
+        $tweetview->tweet = $tweet;
+            $tweetview->render("tweet.php");
     } ?>
 
     <script>

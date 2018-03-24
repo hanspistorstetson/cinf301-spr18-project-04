@@ -18,7 +18,7 @@
                     <a class="nav-link" href="?controller=users&action=home">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?controller=hashtag&action=home">Hashtags</a>
+                    <a class="nav-link" href="?controller=tweets&action=search">Tweets</a>
                 </li>
             </ul>
         </nav>
