@@ -31,7 +31,7 @@ class Tweet {
     }
 
     function replaceHashWithHyperLink($text) {
-        $replaced = preg_replace("/(#\w+)/", '<a href="https://twitter.com/search?q=$1&src=typd" target="_blank">' . '$1</a>', $text);
+        $replaced = preg_replace("/(#\w+)/", '<a href="?controller=tweets&action=search&query=%23$1">' . '$1</a>', $text);
         $replaced = preg_replace("/q=#/", 'q=%23', $replaced);
         return $replaced;
     }
